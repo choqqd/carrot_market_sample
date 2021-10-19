@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "719261762215",
+    "project_id": "testsnslogin-6cabc",
+    "storage_bucket": "testsnslogin-6cabc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719261762215:android:48453300e99127b51d1182",
+        "android_client_info": {
+          "package_name": "com.example.carrot_market_sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719261762215-nvi1lvscogjg46oa5qsf54d41qit5m3a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.carrot_market_sample",
+            "certificate_hash": "617e2bc0564ecfa24da5f15432dafbac166101e2"
+          }
+        },
+        {
+          "client_id": "719261762215-8sti8a18beca0jalnfpvr8l5fb9v2rtt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHiJPDO1NwCiTyBx2HYD1JJyBvS1UOKuk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "719261762215-8sti8a18beca0jalnfpvr8l5fb9v2rtt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
