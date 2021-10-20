@@ -1,7 +1,6 @@
 import 'package:carrot_market_sample/src/page/detail.dart';
 import 'package:carrot_market_sample/repository/contents_repository.dart';
 import 'package:carrot_market_sample/utils/data_utils.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
@@ -16,7 +15,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   late String curruntLocation;
   ContentsRepository contentsRepository = ContentsRepository();
-  
+
   late final Map locationTypeToString = {
     "ara": "아라동",
     "ora": "오라동",
@@ -167,36 +166,21 @@ class _HomeState extends State<Home> {
 
   Widget _bodyWidget() {
     return FutureBuilder(
-      future: Firebase.initializeApp(),
-      builder: (context, snapshot){
-        if(snapshot.hasError){ //파이어베이스 작동하지 않을때
-          return Center(child: Text("Firebase load fail"));
-        }
-        if(snapshot.connectionState == ConnectionState.done){
-          return Center(child: CircularProgressIndicator());
-        }
-        return Center(child: Text("해당 지역에 데이터가 없습니다."));
-        },
-      );
-    }
-    
-    
-  //   FutureBuilder(
-  //       future: _loadContents(),
-  //       builder: (context, snapshot) {
-  //         if (snapshot.connectionState != ConnectionState.done) {
-  //           return Center(child: CircularProgressIndicator());
-  //         }
-  //         if (snapshot.hasError) {
-  //           return Center(child: Text("데이터 오류"));
-  //         }
-  //         if (snapshot.hasData) {
-  //           return _makeDataList(snapshot.data as List<Map<String, String>>);
-  //         }
-  //         return Center(child: Text("해당 지역에 데이터가 없습니다."));
-  //       });
-  //   // return
-  // }
+        future: _loadContents(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState != ConnectionState.done) {
+            return Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasError) {
+            return Center(child: Text("데이터 오류"));
+          }
+          if (snapshot.hasData) {
+            return _makeDataList(snapshot.data as List<Map<String, String>>);
+          }
+          return Center(child: Text("해당 지역에 데이터가 없습니다."));
+        });
+    // return
+  }
 
   @override
   Widget build(BuildContext context) {
