@@ -1,3 +1,4 @@
+import 'package:carrot_market_sample/repository/rest_storage_repository.dart';
 import 'package:carrot_market_sample/src/page/detail.dart';
 import 'package:carrot_market_sample/repository/contents_repository.dart';
 import 'package:carrot_market_sample/utils/data_utils.dart';
@@ -15,6 +16,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   late String curruntLocation;
   ContentsRepository contentsRepository = ContentsRepository();
+  RestStorage restStorage = RestStorage();
 
   late final Map locationTypeToString = {
     "ara": "아라동",
@@ -26,6 +28,8 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     curruntLocation = "ara";
+    var data1 = restStorage.getStoregeValue();
+    print(data1);
   }
 
   PreferredSizeWidget _appbarWidget() {
@@ -73,6 +77,10 @@ class _HomeState extends State<Home> {
             )),
       ],
     );
+  }
+
+  _loadRest() {
+    return restStorage.getStoregeValue();
   }
 
   _loadContents() {
@@ -166,7 +174,7 @@ class _HomeState extends State<Home> {
 
   Widget _bodyWidget() {
     return FutureBuilder(
-        future: _loadContents(),
+        future: _loadRest(),
         builder: (context, snapshot) {
           if (snapshot.connectionState != ConnectionState.done) {
             return Center(child: CircularProgressIndicator());
